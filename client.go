@@ -18,7 +18,7 @@ func NewClient(host string) *Client {
 	return &Client{url: fmt.Sprintf("%s/%s", host, defaultAPIURL)}
 }
 
-func (c *Client) request(param map[string]string) []byte {
+func (c *Client) Request(param map[string]string) []byte {
 
 	req, err := http.NewRequest("GET", c.url, nil)
 	if err != nil {
@@ -54,7 +54,7 @@ func (c *Client) request(param map[string]string) []byte {
 	return responce
 }
 
-func (c *Client) count(tag string, timepoint time.Time) []byte {
+func (c *Client) Count(tag string, timepoint time.Time) []byte {
 	query := fmt.Sprintf("count(%s)", tag)
 
 	param := make(map[string]string)
@@ -63,7 +63,7 @@ func (c *Client) count(tag string, timepoint time.Time) []byte {
 
 	return c.request(param)
 }
-func (c *Client) max(tag string, timepoint time.Time) []byte {
+func (c *Client) Max(tag string, timepoint time.Time) []byte {
 	query := fmt.Sprintf("max(%s)", tag)
 
 	param := make(map[string]string)
