@@ -61,7 +61,7 @@ func (c *Client) Count(tag string, timepoint time.Time) []byte {
 	param["query"] = query
 	param["time"] = string(timepoint.Unix())
 
-	return c.request(param)
+	return c.Request(param)
 }
 func (c *Client) Max(tag string, timepoint time.Time) []byte {
 	query := fmt.Sprintf("max(%s)", tag)
@@ -70,5 +70,5 @@ func (c *Client) Max(tag string, timepoint time.Time) []byte {
 	param["query"] = query
 	param["time"] = string(timepoint.Unix())
 
-	return c.request(param)
+	return c.Request(param)
 }
